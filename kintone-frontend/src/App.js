@@ -4,6 +4,7 @@ import LoadingSpinner from "./components/spinner.js";
 import CountryPicker from "./components/countryPicker.js";
 import StatePicker from "./components/statePicker.js";
 import CityPicker from "./components/cityPicker.js";
+import Map from "./components/Map";
 
 // Import the functions to make API calls
 import getRecords from "./requests/getRecords.js";
@@ -91,6 +92,9 @@ function App() {
       </div>
       <div className="listRecordsDiv">
         <ul>{records}</ul>
+      </div>
+      <div>
+        <Map />
       </div>
     </div>
   );

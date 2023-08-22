@@ -1,4 +1,4 @@
-const getRecordsEndpoint = "http://localhost:80000/getData";
+const getRecordsEndpoint = "http://localhost:8000/getData";
 
 export default async function getRecords() {
   const response = await fetch(getRecordsEndpoint);
