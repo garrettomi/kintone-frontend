@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Map, Marker } from "react-map-gl";
+import { Map } from "react-map-gl";
+import Markers from "../Markers/Markers";
 import "./Map.css";
 
 const Mapbox = () => {
@@ -27,14 +28,12 @@ const Mapbox = () => {
         initialViewState={viewport}
         onViewPortChange={handleViewPortChange}
       >
-        <Marker
+        <Markers
           latitude={37.7749}
           longitude={-122.4194}
           offsetLeft={-20}
           offsetTop={-10}
-        >
-          <div className="marker"></div>
-        </Marker>
+        />
       </Map>
     </div>
   );
