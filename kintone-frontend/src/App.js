@@ -4,8 +4,7 @@ import LoadingSpinner from "./components/spinner.js";
 import CountryPicker from "./components/countryPicker.js";
 import StatePicker from "./components/statePicker.js";
 import CityPicker from "./components/cityPicker.js";
-import Map from "./components/Map";
-
+import Mapbox from "./components/Map/Map";
 // Import the functions to make API calls
 import getRecords from "./requests/getRecords.js";
 import postRecord from "./requests/postRecord.js";
@@ -55,14 +54,14 @@ function App() {
   // Our react JSX.
   return (
     <div className="main">
-      <h2>I Use Kintone!</h2>
+      <h2>Travel Tracker</h2>
       {/* If loading is true, show a spinner, otherwise show nothing. */}
       {loading ? (
         <div className="loadingDiv">
           <LoadingSpinner />
         </div>
       ) : null}
-      Welcome to React and Kintone!
+      Where have you visited?
       <div className="selectDiv">
         <p>Pick a Country</p>
         <CountryPicker
@@ -94,7 +93,7 @@ function App() {
         <ul>{records}</ul>
       </div>
       <div>
-        <Map />
+        <Mapbox />
       </div>
     </div>
   );
