@@ -20,7 +20,7 @@ const Mapbox = () => {
   };
 
   const handleMapClick = (e) => {
-    console.log(e);
+    // console.log(e);
     const newMarker = {
       key: Date.now(),
       longitude: e.lngLat.lng,
