@@ -13,9 +13,20 @@ const Mapbox = () => {
   };
 
   const [viewport, setViewport] = useState(initialViewport);
+  const [markers, setMarkers] = useState([]);
 
   const handleViewPortChange = (newViewport) => {
     setViewport(newViewport);
+  };
+
+  const handleMapClick = (e) => {
+    console.log(e);
+    const newMarker = {
+      key: Date.now(),
+      longitude: e.lngLat.lng,
+      latitude: e.lngLat.lat,
+    };
+    setMarkers([...markers, newMarker]);
   };
 
   return (
@@ -27,13 +38,17 @@ const Mapbox = () => {
         mapboxAccessToken={MAPBOX_TOKEN}
         initialViewState={viewport}
         onViewPortChange={handleViewPortChange}
+        onClick={handleMapClick}
       >
-        <Markers
-          latitude={37.7749}
-          longitude={-122.4194}
-          offsetLeft={-20}
-          offsetTop={-10}
-        />
+        {markers.map((marker) => (
+          <Markers
+            key={marker.key}
+            latitude={marker.latitude}
+            longitude={marker.longitude}
+            offsetLeft={-20}
+            offsetTop={-10}
+          />
+        ))}
       </Map>
     </div>
   );
