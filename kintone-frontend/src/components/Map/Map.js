@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Map } from "react-map-gl";
 import Markers from "../Markers/Markers";
 import "./Map.css";
 
-const Mapbox = ({ selectedCoordinates }) => {
-  console.log("Selected Coordinates", selectedCoordinates);
+const Mapbox = () => {
   const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
   const initialViewport = {
@@ -15,17 +14,6 @@ const Mapbox = ({ selectedCoordinates }) => {
 
   const [viewport, setViewport] = useState(initialViewport);
   const [markers, setMarkers] = useState([]);
-
-  useEffect(() => {
-    if (selectedCoordinates) {
-      const newMarker = {
-        key: Date.now(),
-        longitude: selectedCoordinates[0],
-        latitude: selectedCoordinates[1],
-      };
-      setMarkers([...markers, newMarker]);
-    }
-  }, [selectedCoordinates]);
 
   const handleViewPortChange = (newViewport) => {
     setViewport(newViewport);

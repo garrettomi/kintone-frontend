@@ -16,9 +16,6 @@ function App() {
   const [selectedState, setSelectedState] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
   const [records, setRecords] = useState([]);
-  const [selectedCoordinates, setSelectedCoordinates] = useState(null);
-
-  const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
   // Submit button's onclick function. Calls POST request
   const submit = async () => {
@@ -29,21 +26,12 @@ function App() {
       city: selectedCity.name,
     };
     console.log(selectedCountry);
-
-    const response = await fetch(
-      `https://api.mapbox.com/geocoding/v5/mapbox.places/${location.city},${location.state},${location.country}.json?access_token=${MAPBOX_TOKEN}`
-    );
-    const data = await response.json();
-    const coordinates = data.features[0].center;
-
-    setSelectedCoordinates(coordinates);
-
-    // if (selectedCountry === "") {
-    //   alert("At least pick a country...");
-    // } else {
-    //   let response = await postRecord(location);
-    //   console.log(response);
-    // }
+    if (selectedCountry === "") {
+      alert("At least pick a country...");
+    } else {
+      let response = await postRecord(location);
+      console.log(response);
+    }
     setLoading(false);
   };
 
@@ -105,7 +93,7 @@ function App() {
         <ul>{records}</ul>
       </div>
       <div>
-        <Mapbox selectedCoordinates={selectedCoordinates} />
+        <Mapbox />
       </div>
     </div>
   );
