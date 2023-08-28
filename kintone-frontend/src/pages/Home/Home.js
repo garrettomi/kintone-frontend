@@ -33,6 +33,7 @@ function Home() {
       country: selectedCountry.name,
       state: selectedState.name,
       city: selectedCity.name,
+      email: userEmail.userEmail,
     };
     console.log(selectedCountry);
 
