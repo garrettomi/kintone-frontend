@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import auth from "../../authentication/firebase";
 import { useNavigate } from "react-router-dom";
+import UserContext from "../../context/UserContext";
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  const { setUserEmail } = useContext(UserContext);
 
   const goToLoginPage = () => {
     navigate("/login");
@@ -15,6 +18,8 @@ export default function SignUp() {
   const handleSignUp = async () => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
+      const user = auth.currentUser;
+      setUserEmail(user.email);
       navigate("/");
     } catch (error) {
       console.error(error);

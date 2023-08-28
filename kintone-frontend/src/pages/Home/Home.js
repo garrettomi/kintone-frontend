@@ -1,5 +1,5 @@
 import "./Home.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import LoadingSpinner from "../../components/spinner";
 import CountryPicker from "../../components/countryPicker.js";
 import StatePicker from "../../components/statePicker.js";
@@ -8,6 +8,7 @@ import Mapbox from "../../components/Map/Map";
 // Import the functions to make API calls
 import getRecords from "../../requests/getRecords.js";
 import postRecord from "../../requests/postRecord.js";
+import UserContext from "../../context/UserContext";
 
 function Home() {
   // Our hooks for data and setting that data.
@@ -17,6 +18,10 @@ function Home() {
   const [selectedCity, setSelectedCity] = useState("");
   const [records, setRecords] = useState([]);
   const [selectedCoordinates, setSelectedCoordinates] = useState(null);
+
+  const userEmail = useContext(UserContext);
+
+  console.log("This is the current user's email", userEmail);
 
   const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
