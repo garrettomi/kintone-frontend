@@ -8,6 +8,10 @@ export default function SignUp() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  const goToLoginPage = () => {
+    navigate("/login");
+  };
+
   const handleSignUp = async () => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
@@ -39,6 +43,9 @@ export default function SignUp() {
       </div>
       <button type="button" onClick={handleSignUp}>
         Sign Up
+      </button>
+      <button type="button" onClick={goToLoginPage}>
+        Go back to Login Page
       </button>
     </form>
   );

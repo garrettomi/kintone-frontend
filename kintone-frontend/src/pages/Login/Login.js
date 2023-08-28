@@ -54,7 +54,9 @@ export default function Login() {
       <button type="button" onClick={signInWithGoogle}>
         Sign In with Google
       </button>
-      <Link to="/signup">Need an account? Sign up here.</Link>
+      <div>
+        <Link to="/signup">Need an account? Sign up here.</Link>
+      </div>
     </form>
   );
 }
