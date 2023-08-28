@@ -20,7 +20,7 @@ export default function SignUp() {
   return (
     <form>
       <div>
-        <label htmlFor="email">email</label>
+        <label htmlFor="email">Email:</label>
         <input
           type="email"
           id="email"
