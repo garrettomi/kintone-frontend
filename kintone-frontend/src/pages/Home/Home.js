@@ -38,12 +38,12 @@ function Home() {
 
     setSelectedCoordinates(coordinates);
 
-    // if (selectedCountry === "") {
-    //   alert("At least pick a country...");
-    // } else {
-    //   let response = await postRecord(location);
-    //   console.log(response);
-    // }
+    if (selectedCountry === "") {
+      alert("At least pick a country...");
+    } else {
+      let response = await postRecord(location);
+      console.log(response);
+    }
     setLoading(false);
   };
 

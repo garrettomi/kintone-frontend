@@ -1,5 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
+import auth from "../../authentication/firebase";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -7,29 +13,22 @@ export default function Login() {
   const navigate = useNavigate();
   const handleSubmit = async (event) => {
     event.preventDefault();
+    try {
+      await signInWithEmailAndPassword(auth, username, password);
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-    // const response = await fetch(
-    //   `https://${process.env.SUBDOMAIN}.kintone.com/k/v1/record.json`,
-    //   {
-    //     method: "POST",
-    //     headers: {
-    //       "X-Cybozu-API-Token": process.env.APITOKEN,
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //       app: process.env.APPID,
-    //       record: {
-    //         value: username,
-    //       },
-    //       password: {
-    //         value: password,
-    //       },
-    //     }),
-    //   }
-    // );
-    // const data = await response.json();
-    // console.log(data);
-    navigate("/");
+  const signInWithGoogle = async () => {
+    try {
+      const provider = new GoogleAuthProvider();
+      await signInWithPopup(auth, provider);
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+    }
   };
   return (
     <form onSubmit={handleSubmit}>
@@ -52,6 +51,9 @@ export default function Login() {
         />
       </div>
       <button type="submit">Submit</button>
+      <button type="button" onClick={signInWithGoogle}>
+        Sign Up
+      </button>
     </form>
   );
 }
