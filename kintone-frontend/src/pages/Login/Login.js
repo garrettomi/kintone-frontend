@@ -52,7 +52,7 @@ export default function Login() {
       </div>
       <button type="submit">Submit</button>
       <button type="button" onClick={signInWithGoogle}>
-        Sign Up
+        Sign In with Google
       </button>
     </form>
   );
