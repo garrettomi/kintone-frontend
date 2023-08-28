@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
@@ -54,6 +54,7 @@ export default function Login() {
       <button type="button" onClick={signInWithGoogle}>
         Sign In with Google
       </button>
+      <Link to="/signup">Need an account? Sign up here.</Link>
     </form>
   );
 }
