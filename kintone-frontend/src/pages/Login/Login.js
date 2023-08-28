@@ -30,7 +30,9 @@ export default function Login() {
   const signInWithGoogle = async () => {
     try {
       const provider = new GoogleAuthProvider();
-      await signInWithPopup(auth, provider);
+      const response = await signInWithPopup(auth, provider);
+      const user = response.user;
+      setUserEmail(user.email);
       navigate("/");
     } catch (error) {
       console.error(error);

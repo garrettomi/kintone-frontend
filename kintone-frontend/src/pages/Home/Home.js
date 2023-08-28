@@ -9,6 +9,7 @@ import Mapbox from "../../components/Map/Map";
 import getRecords from "../../requests/getRecords.js";
 import postRecord from "../../requests/postRecord.js";
 import UserContext from "../../context/UserContext";
+import Logout from "../Logout/Logout";
 
 function Home() {
   // Our hooks for data and setting that data.
@@ -106,6 +107,7 @@ function Home() {
           Get!
         </button>
       </div>
+      <Logout />
       <div className="listRecordsDiv">
         <ul>{records}</ul>
       </div>
