@@ -109,6 +109,7 @@ function Home() {
         </button>
       </div>
       <Logout />
+      <div>Logged in as: {userEmail.userEmail}</div>
       <div className="listRecordsDiv">
         <ul>{records}</ul>
       </div>
