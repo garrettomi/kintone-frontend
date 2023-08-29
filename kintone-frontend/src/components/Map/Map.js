@@ -76,7 +76,6 @@ const Mapbox = ({ selectedCoordinates, retrieveCoordinates }) => {
       >
         {markers.map((marker) => (
           <Markers
-            key={marker.key}
             latitude={marker.latitude}
             longitude={marker.longitude}
             offsetLeft={-20}
