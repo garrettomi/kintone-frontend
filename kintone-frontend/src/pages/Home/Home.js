@@ -19,6 +19,7 @@ function Home() {
   const [selectedCity, setSelectedCity] = useState("");
   const [records, setRecords] = useState([]);
   const [selectedCoordinates, setSelectedCoordinates] = useState(null);
+  const [retrieveCoordinates, setRetrieveCoordinates] = useState(null);
 
   const userEmail = useContext(UserContext);
 
@@ -64,21 +65,19 @@ function Home() {
   const get = async () => {
     setLoading(true);
     let response = await getRecords();
-    console.log("GET RESPONSE", response.records);
     let getCoordinates = response.records.flatMap((record) => {
-      return [record.locCoordsX.value, record.locCoordsY.value];
+      return [+record.locCoordsX.value, +record.locCoordsY.value];
     });
-    console.log("GET COORDINATES", getCoordinates);
     let locationArray = [];
     response.records.forEach((record, index) => {
       locationArray.push(
         <li key={index}>
           {record.country.value}, {record.state.value}, {record.city.value},
-          {record.locCoordsX.value}, {record.locCoordsY.value}
         </li>
       );
     });
     setRecords(locationArray);
+    setRetrieveCoordinates(getCoordinates);
     setLoading(false);
   };
 
@@ -126,7 +125,10 @@ function Home() {
         <ul>{records}</ul>
       </div>
       <div>
-        <Mapbox selectedCoordinates={selectedCoordinates} records={records} />
+        <Mapbox
+          selectedCoordinates={selectedCoordinates}
+          retrieveCoordinates={retrieveCoordinates}
+        />
       </div>
     </div>
   );
