@@ -67,7 +67,7 @@ function Home() {
     let response = await getRecords();
     let getCoordinates = response.records
       .filter((record) => record.email.value === userEmail.userEmail)
-      .flatMap((record) => {
+      .map((record) => {
         return [
           Number(record.locCoordsX.value),
           Number(record.locCoordsY.value),

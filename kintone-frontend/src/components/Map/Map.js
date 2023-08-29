@@ -17,14 +17,25 @@ const Mapbox = ({ selectedCoordinates, retrieveCoordinates }) => {
   const [viewport, setViewport] = useState(initialViewport);
   const [markers, setMarkers] = useState([]);
 
+  // useEffect(() => {
+  //   if (retrieveCoordinates) {
+  //     const newMarker = {
+  //       key: Date.now(),
+  //       longitude: retrieveCoordinates[0],
+  //       latitude: retrieveCoordinates[1],
+  //     };
+  //     setMarkers([...markers, newMarker]);
+  //   }
+  // }, [retrieveCoordinates]);
+
   useEffect(() => {
     if (retrieveCoordinates) {
-      const newMarker = {
-        key: Date.now(),
-        longitude: retrieveCoordinates[0],
-        latitude: retrieveCoordinates[1],
-      };
-      setMarkers([...markers, newMarker]);
+      const newMarkers = retrieveCoordinates.map((coords, index) => ({
+        key: index,
+        longitude: coords[0],
+        latitude: coords[1],
+      }));
+      setMarkers([...markers, ...newMarkers]);
     }
   }, [retrieveCoordinates]);
 
