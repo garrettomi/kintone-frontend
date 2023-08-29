@@ -4,7 +4,7 @@ import Markers from "../Markers/Markers";
 import "./Map.css";
 
 const Mapbox = ({ selectedCoordinates, retrieveCoordinates }) => {
-  // console.log("Selected Coordinates", selectedCoordinates);
+  console.log("Selected Coordinates", selectedCoordinates);
   // console.log("GET COORDINATES PROPS", retrieveCoordinates);
   const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
@@ -19,16 +19,16 @@ const Mapbox = ({ selectedCoordinates, retrieveCoordinates }) => {
   const [viewport, setViewport] = useState(initialViewport);
   const [markers, setMarkers] = useState([]);
 
-  // useEffect(() => {
-  //   if (retrieveCoordinates) {
-  //     const newMarker = {
-  //       key: Date.now(),
-  //       longitude: retrieveCoordinates[0],
-  //       latitude: retrieveCoordinates[1],
-  //     };
-  //     setMarkers([...markers, newMarker]);
-  //   }
-  // }, [retrieveCoordinates]);
+  useEffect(() => {
+    if (selectedCoordinates) {
+      const newMarker = {
+        key: Date.now(),
+        longitude: selectedCoordinates[0],
+        latitude: selectedCoordinates[1],
+      };
+      setMarkers([...markers, newMarker]);
+    }
+  }, [selectedCoordinates]);
 
   useEffect(() => {
     if (retrieveCoordinates) {
