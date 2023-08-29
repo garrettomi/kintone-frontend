@@ -18,15 +18,15 @@ const Mapbox = ({ selectedCoordinates, retrieveCoordinates }) => {
   const [markers, setMarkers] = useState([]);
 
   useEffect(() => {
-    if (selectedCoordinates) {
+    if (retrieveCoordinates) {
       const newMarker = {
         key: Date.now(),
-        longitude: selectedCoordinates[0],
-        latitude: selectedCoordinates[1],
+        longitude: retrieveCoordinates[0],
+        latitude: retrieveCoordinates[1],
       };
       setMarkers([...markers, newMarker]);
     }
-  }, [selectedCoordinates]);
+  }, [retrieveCoordinates]);
 
   const handleViewPortChange = (newViewport) => {
     setViewport(newViewport);

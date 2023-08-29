@@ -72,7 +72,7 @@ function Home() {
     response.records.forEach((record, index) => {
       locationArray.push(
         <li key={index}>
-          {record.country.value}, {record.state.value}, {record.city.value},
+          {record.country.value}, {record.state.value}, {record.city.value}
         </li>
       );
     });
