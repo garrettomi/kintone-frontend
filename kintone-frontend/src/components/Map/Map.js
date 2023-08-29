@@ -9,9 +9,11 @@ const Mapbox = ({ selectedCoordinates, retrieveCoordinates }) => {
   const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
   const initialViewport = {
-    latitude: 37.7749,
-    longitude: -122.4194,
-    zoom: 8,
+    latitude: 0,
+    longitude: 0,
+    zoom: 1,
+    minZoom: 1,
+    maxZoom: 10,
   };
 
   const [viewport, setViewport] = useState(initialViewport);
@@ -40,6 +42,14 @@ const Mapbox = ({ selectedCoordinates, retrieveCoordinates }) => {
   }, [retrieveCoordinates]);
 
   const handleViewPortChange = (newViewport) => {
+    const maxAllowedLongitude = 180;
+    const minAllowedLongitude = -180;
+
+    if (newViewport.longitude > maxAllowedLongitude) {
+      newViewport.longitude = maxAllowedLongitude;
+    } else if (newViewport.longitude < minAllowedLongitude) {
+      newViewport.longitude = minAllowedLongitude;
+    }
     setViewport(newViewport);
   };
 
