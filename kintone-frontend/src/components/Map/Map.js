@@ -85,8 +85,9 @@ const Mapbox = ({ selectedCoordinates, location }) => {
         onViewPortChange={handleViewPortChange}
         // onClick={handleMapClick}
       >
-        {markers.map((marker) => (
+        {markers.map((marker, index) => (
           <Markers
+            key={index}
             latitude={marker.latitude}
             longitude={marker.longitude}
             offsetLeft={-20}
