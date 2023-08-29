@@ -19,7 +19,8 @@ function Home() {
   const [selectedCity, setSelectedCity] = useState("");
   // const [records, setRecords] = useState([]);
   const [selectedCoordinates, setSelectedCoordinates] = useState(null);
-  const [retrieveCoordinates, setRetrieveCoordinates] = useState(null);
+  const [location, setLocation] = useState(null);
+  // const [retrieveCoordinates, setRetrieveCoordinates] = useState(null);
 
   const userEmail = useContext(UserContext);
 
@@ -32,14 +33,28 @@ function Home() {
       setLoading(true);
 
       let response = await getRecords();
-      let getCoordinates = response.records
+      let getLocation = response.records
         .filter((record) => record.email.value === userEmail.userEmail)
-        .map((record) => [
-          Number(record.locCoordsX.value),
-          Number(record.locCoordsY.value),
-        ]);
+        .map((record) => {
+          const city = record.city.value;
+          const country = record.country.value;
+          const state = record.state ? record.state.value : "";
+          const coordinates = [
+            Number(record.locCoordsX.value),
+            Number(record.locCoordsY.value),
+          ];
 
-      setRetrieveCoordinates(getCoordinates);
+          return {
+            city,
+            country,
+            state,
+            coordinates,
+          };
+        });
+
+      // console.log("GET COORDINATES", getLocation);
+      setLocation(getLocation);
+      // setRetrieveCoordinates(getCoordinates.coordinates);
       setLoading(false);
     }
 
@@ -152,7 +167,8 @@ function Home() {
       <div>
         <Mapbox
           selectedCoordinates={selectedCoordinates}
-          retrieveCoordinates={retrieveCoordinates}
+          // retrieveCoordinates={retrieveCoordinates}
+          location={location}
         />
       </div>
     </div>

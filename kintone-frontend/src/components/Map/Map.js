@@ -3,9 +3,9 @@ import { Map } from "react-map-gl";
 import Markers from "../Markers/Markers";
 import "./Map.css";
 
-const Mapbox = ({ selectedCoordinates, retrieveCoordinates }) => {
-  console.log("Selected Coordinates", selectedCoordinates);
-  // console.log("GET COORDINATES PROPS", retrieveCoordinates);
+const Mapbox = ({ selectedCoordinates, location }) => {
+  // console.log("Selected Coordinates", selectedCoordinates);
+  console.log("LOCATION PROPS", location);
   const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
   const initialViewport = {
@@ -31,15 +31,26 @@ const Mapbox = ({ selectedCoordinates, retrieveCoordinates }) => {
   }, [selectedCoordinates]);
 
   useEffect(() => {
-    if (retrieveCoordinates) {
-      const newMarkers = retrieveCoordinates.map((coords, index) => ({
+    if (location) {
+      const newMarkers = location.map((loc, index) => ({
         key: index,
-        longitude: coords[0],
-        latitude: coords[1],
+        longitude: loc.coordinates[0],
+        latitude: loc.coordinates[1],
       }));
-      setMarkers([...markers, ...newMarkers]);
+      setMarkers(newMarkers);
     }
-  }, [retrieveCoordinates]);
+  }, [location]);
+
+  // useEffect(() => {
+  //   if (retrieveCoordinates) {
+  //     const newMarkers = retrieveCoordinates.map((coords, index) => ({
+  //       key: index,
+  //       longitude: coords[0],
+  //       latitude: coords[1],
+  //     }));
+  //     setMarkers([...markers, ...newMarkers]);
+  //   }
+  // }, [retrieveCoordinates]);
 
   const handleViewPortChange = (newViewport) => {
     const maxAllowedLongitude = 180;
