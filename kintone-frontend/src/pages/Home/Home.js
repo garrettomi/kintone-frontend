@@ -23,7 +23,7 @@ function Home() {
 
   const userEmail = useContext(UserContext);
 
-  console.log("This is the current user's email", userEmail);
+  console.log("This is the current user's email:", userEmail.userEmail);
 
   const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
@@ -65,9 +65,15 @@ function Home() {
   const get = async () => {
     setLoading(true);
     let response = await getRecords();
-    let getCoordinates = response.records.flatMap((record) => {
-      return [+record.locCoordsX.value, +record.locCoordsY.value];
-    });
+    let getCoordinates = response.records
+      .filter((record) => record.email.value === userEmail.userEmail)
+      .flatMap((record) => {
+        return [
+          Number(record.locCoordsX.value),
+          Number(record.locCoordsY.value),
+        ];
+      });
+    console.log("GET COORDINATES", getCoordinates);
     let locationArray = [];
     response.records.forEach((record, index) => {
       locationArray.push(
