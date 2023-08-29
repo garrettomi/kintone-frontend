@@ -1,5 +1,5 @@
 import "./Home.css";
-import { useState, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import LoadingSpinner from "../../components/spinner";
 import CountryPicker from "../../components/countryPicker.js";
 import StatePicker from "../../components/statePicker.js";
@@ -17,7 +17,7 @@ function Home() {
   const [selectedCountry, setSelectedCountry] = useState("");
   const [selectedState, setSelectedState] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
-  const [records, setRecords] = useState([]);
+  // const [records, setRecords] = useState([]);
   const [selectedCoordinates, setSelectedCoordinates] = useState(null);
   const [retrieveCoordinates, setRetrieveCoordinates] = useState(null);
 
@@ -26,6 +26,25 @@ function Home() {
   // console.log("This is the current user's email:", userEmail.userEmail);
 
   const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
+
+  useEffect(() => {
+    async function fetchData() {
+      setLoading(true);
+
+      let response = await getRecords();
+      let getCoordinates = response.records
+        .filter((record) => record.email.value === userEmail.userEmail)
+        .map((record) => [
+          Number(record.locCoordsX.value),
+          Number(record.locCoordsY.value),
+        ]);
+
+      setRetrieveCoordinates(getCoordinates);
+      setLoading(false);
+    }
+
+    fetchData();
+  }, [userEmail.userEmail]);
 
   // Submit button's onclick function. Calls POST request
   const submit = async () => {
@@ -62,30 +81,30 @@ function Home() {
   };
 
   // Get button's onClick function. Calls GET API request.
-  const get = async () => {
-    setLoading(true);
-    let response = await getRecords();
-    let getCoordinates = response.records
-      .filter((record) => record.email.value === userEmail.userEmail)
-      .map((record) => {
-        return [
-          Number(record.locCoordsX.value),
-          Number(record.locCoordsY.value),
-        ];
-      });
-    // console.log("GET COORDINATES", getCoordinates);
-    // let locationArray = [];
-    // response.records.forEach((record, index) => {
-    //   locationArray.push(
-    //     <li key={index}>
-    //       {record.country.value}, {record.state.value}, {record.city.value}
-    //     </li>
-    //   );
-    // });
-    // setRecords(locationArray);
-    setRetrieveCoordinates(getCoordinates);
-    setLoading(false);
-  };
+  // const get = async () => {
+  //   setLoading(true);
+  //   let response = await getRecords();
+  //   let getCoordinates = response.records
+  //     .filter((record) => record.email.value === userEmail.userEmail)
+  //     .map((record) => {
+  //       return [
+  //         Number(record.locCoordsX.value),
+  //         Number(record.locCoordsY.value),
+  //       ];
+  //     });
+  //   // console.log("GET COORDINATES", getCoordinates);
+  //   // let locationArray = [];
+  //   // response.records.forEach((record, index) => {
+  //   //   locationArray.push(
+  //   //     <li key={index}>
+  //   //       {record.country.value}, {record.state.value}, {record.city.value}
+  //   //     </li>
+  //   //   );
+  //   // });
+  //   // setRecords(locationArray);
+  //   setRetrieveCoordinates(getCoordinates);
+  //   setLoading(false);
+  // };
 
   // Our react JSX.
   return (
@@ -121,9 +140,9 @@ function Home() {
         <button onClick={submit} disabled={loading ? true : false}>
           Submit!
         </button>
-        <button onClick={get} disabled={loading ? true : false}>
+        {/* <button onClick={get} disabled={loading ? true : false}>
           Get!
-        </button>
+        </button> */}
       </div>
       <Logout />
       <div>Logged in as: {userEmail.userEmail}</div>
