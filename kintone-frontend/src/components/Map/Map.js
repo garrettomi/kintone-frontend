@@ -3,8 +3,9 @@ import { Map } from "react-map-gl";
 import Markers from "../Markers/Markers";
 import "./Map.css";
 
-const Mapbox = ({ selectedCoordinates }) => {
-  console.log("Selected Coordinates", selectedCoordinates);
+const Mapbox = ({ selectedCoordinates, records }) => {
+  // console.log("Selected Coordinates", selectedCoordinates);
+  console.log("GET RECORDS PROPS", records);
   const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
   const initialViewport = {

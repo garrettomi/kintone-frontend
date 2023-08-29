@@ -64,6 +64,11 @@ function Home() {
   const get = async () => {
     setLoading(true);
     let response = await getRecords();
+    console.log("GET RESPONSE", response.records);
+    let getCoordinates = response.records.flatMap((record) => {
+      return [record.locCoordsX.value, record.locCoordsY.value];
+    });
+    console.log("GET COORDINATES", getCoordinates);
     let locationArray = [];
     response.records.forEach((record, index) => {
       locationArray.push(
@@ -73,7 +78,6 @@ function Home() {
         </li>
       );
     });
-    console.log("GET records", locationArray);
     setRecords(locationArray);
     setLoading(false);
   };
@@ -122,7 +126,7 @@ function Home() {
         <ul>{records}</ul>
       </div>
       <div>
-        <Mapbox selectedCoordinates={selectedCoordinates} />
+        <Mapbox selectedCoordinates={selectedCoordinates} records={records} />
       </div>
     </div>
   );
