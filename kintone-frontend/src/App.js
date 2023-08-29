@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  // Navigate,
+  Navigate,
 } from "react-router-dom";
 import Login from "./pages/Login/Login";
 import Home from "./pages/Home/Home";
@@ -12,7 +12,7 @@ import UserContext from "./context/UserContext";
 
 function App() {
   const [userEmail, setUserEmail] = useState(null);
-  // const isLoggedIn = userEmail !== null;
+  const isLoggedIn = userEmail !== null;
   return (
     <UserContext.Provider value={{ userEmail, setUserEmail }}>
       <Router>
@@ -21,8 +21,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route
             path="/"
-            element={<Home />}
-            // element={isLoggedIn ? <Home /> : <Navigate to="/login" />}
+            element={isLoggedIn ? <Home /> : <Navigate to="/login" />}
           />
         </Routes>
       </Router>

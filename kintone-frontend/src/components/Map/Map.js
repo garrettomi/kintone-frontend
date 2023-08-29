@@ -5,7 +5,7 @@ import "./Map.css";
 
 const Mapbox = ({ selectedCoordinates, retrieveCoordinates }) => {
   // console.log("Selected Coordinates", selectedCoordinates);
-  console.log("GET COORDINATES PROPS", retrieveCoordinates);
+  // console.log("GET COORDINATES PROPS", retrieveCoordinates);
   const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
   const initialViewport = {

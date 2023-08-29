@@ -23,7 +23,7 @@ function Home() {
 
   const userEmail = useContext(UserContext);
 
-  console.log("This is the current user's email:", userEmail.userEmail);
+  // console.log("This is the current user's email:", userEmail.userEmail);
 
   const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
@@ -73,16 +73,16 @@ function Home() {
           Number(record.locCoordsY.value),
         ];
       });
-    console.log("GET COORDINATES", getCoordinates);
-    let locationArray = [];
-    response.records.forEach((record, index) => {
-      locationArray.push(
-        <li key={index}>
-          {record.country.value}, {record.state.value}, {record.city.value}
-        </li>
-      );
-    });
-    setRecords(locationArray);
+    // console.log("GET COORDINATES", getCoordinates);
+    // let locationArray = [];
+    // response.records.forEach((record, index) => {
+    //   locationArray.push(
+    //     <li key={index}>
+    //       {record.country.value}, {record.state.value}, {record.city.value}
+    //     </li>
+    //   );
+    // });
+    // setRecords(locationArray);
     setRetrieveCoordinates(getCoordinates);
     setLoading(false);
   };
@@ -127,9 +127,9 @@ function Home() {
       </div>
       <Logout />
       <div>Logged in as: {userEmail.userEmail}</div>
-      <div className="listRecordsDiv">
+      {/* <div className="listRecordsDiv">
         <ul>{records}</ul>
-      </div>
+      </div> */}
       <div>
         <Mapbox
           selectedCoordinates={selectedCoordinates}
