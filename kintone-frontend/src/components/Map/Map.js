@@ -31,15 +31,15 @@ const Mapbox = ({ selectedCoordinates }) => {
     setViewport(newViewport);
   };
 
-  const handleMapClick = (e) => {
-    // console.log(e);
-    const newMarker = {
-      key: Date.now(),
-      longitude: e.lngLat.lng,
-      latitude: e.lngLat.lat,
-    };
-    setMarkers([...markers, newMarker]);
-  };
+  // const handleMapClick = (e) => {
+  //   const newMarker = {
+  //     key: Date.now(),
+  //     longitude: e.lngLat.lng,
+  //     latitude: e.lngLat.lat,
+  //   };
+  //   console.log("newMarker", newMarker);
+  //   setMarkers([...markers, newMarker]);
+  // };
 
   return (
     <div className="map-container">
@@ -50,7 +50,7 @@ const Mapbox = ({ selectedCoordinates }) => {
         mapboxAccessToken={MAPBOX_TOKEN}
         initialViewState={viewport}
         onViewPortChange={handleViewPortChange}
-        onClick={handleMapClick}
+        // onClick={handleMapClick}
       >
         {markers.map((marker) => (
           <Markers

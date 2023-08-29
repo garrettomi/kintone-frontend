@@ -33,17 +33,23 @@ function Home() {
       country: selectedCountry.name,
       state: selectedState.name,
       city: selectedCity.name,
-      email: userEmail.userEmail,
     };
-    console.log(selectedCountry);
 
     const response = await fetch(
       `https://api.mapbox.com/geocoding/v5/mapbox.places/${location.city},${location.state},${location.country}.json?access_token=${MAPBOX_TOKEN}`
     );
     const data = await response.json();
     const coordinates = data.features[0].center;
-
     setSelectedCoordinates(coordinates);
+
+    location = {
+      country: selectedCountry.name,
+      state: selectedState.name,
+      city: selectedCity.name,
+      email: userEmail.userEmail,
+      locCoordsX: coordinates[0],
+      locCoordsY: coordinates[1],
+    };
 
     if (selectedCountry === "") {
       alert("At least pick a country...");
@@ -62,10 +68,12 @@ function Home() {
     response.records.forEach((record, index) => {
       locationArray.push(
         <li key={index}>
-          {record.country.value}, {record.state.value}, {record.city.value}
+          {record.country.value}, {record.state.value}, {record.city.value},
+          {record.locCoordsX.value}, {record.locCoordsY.value}
         </li>
       );
     });
+    console.log("GET records", locationArray);
     setRecords(locationArray);
     setLoading(false);
   };

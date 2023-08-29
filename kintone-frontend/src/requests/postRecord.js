@@ -11,6 +11,8 @@ export default async function postRecord(location) {
     state: location.state,
     city: location.city,
     email: location.email,
+    locCoordsX: location.locCoordsX,
+    locCoordsY: location.locCoordsY,
   };
 
   const options = {
