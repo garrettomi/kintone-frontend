@@ -9,6 +9,7 @@ import getRecords from "../../requests/getRecords.js";
 import postRecord from "../../requests/postRecord.js";
 import UserContext from "../../context/UserContext";
 import Logout from "../Logout/Logout";
+import CloudinaryWidget from "../../components/CloudinaryWidget/CloudinaryWidget";
 
 function Home() {
   const [loading, setLoading] = useState(false);
@@ -113,6 +114,9 @@ function Home() {
           selectedCity={selectedCity}
           setSelectedCity={setSelectedCity}
         />
+      </div>
+      <div>
+        <CloudinaryWidget />
       </div>
       <div className="submitDiv">
         <button onClick={submit} disabled={loading ? true : false}>
