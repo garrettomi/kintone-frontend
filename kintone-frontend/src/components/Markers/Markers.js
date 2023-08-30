@@ -9,9 +9,13 @@ const Markers = ({ latitude, longitude, offsetLeft, offsetTop, location }) => {
     setShowPopup(!showPopup);
   };
 
+  console.log("LOCATION", location);
+
   const locationInfo = location.find(
     (loc) => loc.coordinates[0] === longitude && loc.coordinates[1] === latitude
   );
+
+  console.log("LOCATION INFO", locationInfo);
 
   return (
     <div>

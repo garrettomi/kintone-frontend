@@ -78,8 +78,9 @@ function Home() {
       state: selectedState.name,
       city: selectedCity.name,
       email: userEmail.userEmail,
-      locCoordsX: coordinates[0],
-      locCoordsY: coordinates[1],
+      coordinates: [coordinates[0], coordinates[1]],
+      // locCoordsX: coordinates[0],
+      // locCoordsY: coordinates[1],
       imageUrl: imageUrl,
     };
 
@@ -88,6 +89,8 @@ function Home() {
     } else {
       let response = await postRecord(location);
       console.log(response);
+
+      setLocation((prevLocation) => [...prevLocation, location]);
     }
     setLoading(false);
   };
