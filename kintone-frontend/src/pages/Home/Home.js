@@ -78,11 +78,12 @@ function Home() {
       state: selectedState.name,
       city: selectedCity.name,
       email: userEmail.userEmail,
-      coordinates: [coordinates[0], coordinates[1]],
-      // locCoordsX: coordinates[0],
-      // locCoordsY: coordinates[1],
+      locCoordsX: coordinates[0],
+      locCoordsY: coordinates[1],
       imageUrl: imageUrl,
     };
+
+    console.log("NEW LOCATION:", location);
 
     if (selectedCountry === "") {
       alert("At least pick a country...");

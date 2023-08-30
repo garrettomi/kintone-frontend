@@ -11,9 +11,8 @@ export default async function postRecord(location) {
     state: location.state,
     city: location.city,
     email: location.email,
-    coordinates: location.coordinates,
-    // locCoordsX: location.locCoordsX,
-    // locCoordsY: location.locCoordsY,
+    locCoordsX: location.locCoordsX,
+    locCoordsY: location.locCoordsY,
     imageUrl: location.imageUrl,
   };
 
