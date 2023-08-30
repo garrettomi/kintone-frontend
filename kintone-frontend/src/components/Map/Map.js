@@ -4,8 +4,6 @@ import Markers from "../Markers/Markers";
 import "./Map.css";
 
 const Mapbox = ({ selectedCoordinates, location }) => {
-  // console.log("Selected Coordinates", selectedCoordinates);
-  console.log("LOCATION PROPS", location);
   const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
   const initialViewport = {
@@ -41,17 +39,6 @@ const Mapbox = ({ selectedCoordinates, location }) => {
     }
   }, [location]);
 
-  // useEffect(() => {
-  //   if (retrieveCoordinates) {
-  //     const newMarkers = retrieveCoordinates.map((coords, index) => ({
-  //       key: index,
-  //       longitude: coords[0],
-  //       latitude: coords[1],
-  //     }));
-  //     setMarkers([...markers, ...newMarkers]);
-  //   }
-  // }, [retrieveCoordinates]);
-
   const handleViewPortChange = (newViewport) => {
     const maxAllowedLongitude = 180;
     const minAllowedLongitude = -180;
@@ -64,16 +51,6 @@ const Mapbox = ({ selectedCoordinates, location }) => {
     setViewport(newViewport);
   };
 
-  // const handleMapClick = (e) => {
-  //   const newMarker = {
-  //     key: Date.now(),
-  //     longitude: e.lngLat.lng,
-  //     latitude: e.lngLat.lat,
-  //   };
-  //   console.log("newMarker", newMarker);
-  //   setMarkers([...markers, newMarker]);
-  // };
-
   return (
     <div className="map-container">
       <Map
@@ -83,7 +60,6 @@ const Mapbox = ({ selectedCoordinates, location }) => {
         mapboxAccessToken={MAPBOX_TOKEN}
         initialViewState={viewport}
         onViewPortChange={handleViewPortChange}
-        // onClick={handleMapClick}
       >
         {markers.map((marker, index) => (
           <Markers
