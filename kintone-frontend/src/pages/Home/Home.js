@@ -35,17 +35,20 @@ function Home() {
           const city = record.city.value;
           const country = record.country.value;
           const state = record.state ? record.state.value : "";
-          const coordinates = [
-            Number(record.locCoordsX.value),
-            Number(record.locCoordsY.value),
-          ];
+          // const coordinates = [
+          //   Number(record.locCoordsX.value),
+          //   Number(record.locCoordsY.value),
+          // ];
+          const locCoordsX = record.locCoordsX.value;
+          const locCoordsY = record.locCoordsY.value;
           const imageUrl = record.imageUrl.value;
 
           return {
             city,
             country,
             state,
-            coordinates,
+            locCoordsX,
+            locCoordsY,
             imageUrl,
           };
         });

@@ -32,8 +32,10 @@ const Mapbox = ({ selectedCoordinates, location }) => {
     if (location) {
       const newMarkers = location.map((loc, index) => ({
         key: index,
-        longitude: loc.coordinates[0],
-        latitude: loc.coordinates[1],
+        // longitude: loc.coordinates[0],
+        // latitude: loc.coordinates[1],
+        longitude: loc.locCoordsX,
+        latitude: loc.CoordsY,
       }));
       setMarkers(newMarkers);
     }
