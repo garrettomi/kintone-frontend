@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import "./Cloudinary.css";
 
-const CloudinaryWidget = () => {
-  const [imageUrl, setImageUrl] = useState("");
+const CloudinaryWidget = ({ imageUrl, setImageUrl }) => {
+  //   const [imageUrl, setImageUrl] = useState("");
 
   useEffect(() => {
     // Load the Cloudinary Upload Widget script
@@ -37,7 +37,7 @@ const CloudinaryWidget = () => {
       // Clean up the script element when the component unmounts
       document.body.removeChild(script);
     };
-  }, []);
+  }, [setImageUrl]);
 
   return (
     <div>

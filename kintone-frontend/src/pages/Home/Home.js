@@ -18,6 +18,7 @@ function Home() {
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedCoordinates, setSelectedCoordinates] = useState(null);
   const [location, setLocation] = useState(null);
+  const [imageUrl, setImageUrl] = useState("");
 
   const userEmail = useContext(UserContext);
 
@@ -60,6 +61,7 @@ function Home() {
       country: selectedCountry.name,
       state: selectedState.name,
       city: selectedCity.name,
+      imageUrl: imageUrl,
     };
 
     const response = await fetch(
@@ -76,6 +78,7 @@ function Home() {
       email: userEmail.userEmail,
       locCoordsX: coordinates[0],
       locCoordsY: coordinates[1],
+      imageUrl: imageUrl,
     };
 
     if (selectedCountry === "") {
@@ -116,7 +119,7 @@ function Home() {
         />
       </div>
       <div>
-        <CloudinaryWidget />
+        <CloudinaryWidget imageUrl={imageUrl} setImageUrl={setImageUrl} />
       </div>
       <div className="submitDiv">
         <button onClick={submit} disabled={loading ? true : false}>

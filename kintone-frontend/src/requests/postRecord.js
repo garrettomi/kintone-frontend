@@ -13,6 +13,7 @@ export default async function postRecord(location) {
     email: location.email,
     locCoordsX: location.locCoordsX,
     locCoordsY: location.locCoordsY,
+    imageUrl: location.imageUrl,
   };
 
   const options = {
