@@ -4,3 +4,8 @@
     border-radius: 50%;
     background-color: red;
   } */
+
+  .locationImage {
+    width: 100%;
+    height: 25vh;
+  }

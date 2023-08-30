@@ -39,12 +39,14 @@ function Home() {
             Number(record.locCoordsX.value),
             Number(record.locCoordsY.value),
           ];
+          const imageUrl = record.imageUrl.value;
 
           return {
             city,
             country,
             state,
             coordinates,
+            imageUrl,
           };
         });
 

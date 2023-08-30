@@ -37,6 +37,14 @@ const Markers = ({ latitude, longitude, offsetLeft, offsetTop, location }) => {
             <p>Country: {locationInfo.country}</p>
             <p>State: {locationInfo.state}</p>
             <p>City: {locationInfo.city}</p>
+
+            {locationInfo.imageUrl && (
+              <img
+                src={locationInfo.imageUrl}
+                className="locationImage"
+                alt="location"
+              />
+            )}
           </div>
         </Popup>
       )}
