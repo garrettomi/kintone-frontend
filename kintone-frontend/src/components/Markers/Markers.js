@@ -41,14 +41,6 @@ const Markers = ({ latitude, longitude, offsetLeft, offsetTop, location }) => {
         </Popup>
       )}
     </div>
-    // <Marker
-    //   latitude={latitude}
-    //   longitude={longitude}
-    //   offsetLeft={offsetLeft}
-    //   offsetTop={offsetTop}
-    // >
-    //   <div className="marker"></div>
-    // </Marker>
   );
 };
 
