@@ -5,26 +5,20 @@ import CountryPicker from "../../components/countryPicker.js";
 import StatePicker from "../../components/statePicker.js";
 import CityPicker from "../../components/cityPicker.js";
 import Mapbox from "../../components/Map/Map";
-// Import the functions to make API calls
 import getRecords from "../../requests/getRecords.js";
 import postRecord from "../../requests/postRecord.js";
 import UserContext from "../../context/UserContext";
 import Logout from "../Logout/Logout";
 
 function Home() {
-  // Our hooks for data and setting that data.
   const [loading, setLoading] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState("");
   const [selectedState, setSelectedState] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
-  // const [records, setRecords] = useState([]);
   const [selectedCoordinates, setSelectedCoordinates] = useState(null);
   const [location, setLocation] = useState(null);
-  // const [retrieveCoordinates, setRetrieveCoordinates] = useState(null);
 
   const userEmail = useContext(UserContext);
-
-  // console.log("This is the current user's email:", userEmail.userEmail);
 
   const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
@@ -52,16 +46,13 @@ function Home() {
           };
         });
 
-      // console.log("GET COORDINATES", getLocation);
       setLocation(getLocation);
-      // setRetrieveCoordinates(getCoordinates.coordinates);
       setLoading(false);
     }
 
     fetchData();
   }, [userEmail.userEmail]);
 
-  // Submit button's onclick function. Calls POST request
   const submit = async () => {
     setLoading(true);
     let location = {
@@ -95,37 +86,9 @@ function Home() {
     setLoading(false);
   };
 
-  // Get button's onClick function. Calls GET API request.
-  // const get = async () => {
-  //   setLoading(true);
-  //   let response = await getRecords();
-  //   let getCoordinates = response.records
-  //     .filter((record) => record.email.value === userEmail.userEmail)
-  //     .map((record) => {
-  //       return [
-  //         Number(record.locCoordsX.value),
-  //         Number(record.locCoordsY.value),
-  //       ];
-  //     });
-  //   // console.log("GET COORDINATES", getCoordinates);
-  //   // let locationArray = [];
-  //   // response.records.forEach((record, index) => {
-  //   //   locationArray.push(
-  //   //     <li key={index}>
-  //   //       {record.country.value}, {record.state.value}, {record.city.value}
-  //   //     </li>
-  //   //   );
-  //   // });
-  //   // setRecords(locationArray);
-  //   setRetrieveCoordinates(getCoordinates);
-  //   setLoading(false);
-  // };
-
-  // Our react JSX.
   return (
     <div className="main">
       <h2>Travel Tracker</h2>
-      {/* If loading is true, show a spinner, otherwise show nothing. */}
       {loading ? (
         <div className="loadingDiv">
           <LoadingSpinner />
@@ -155,21 +118,11 @@ function Home() {
         <button onClick={submit} disabled={loading ? true : false}>
           Submit!
         </button>
-        {/* <button onClick={get} disabled={loading ? true : false}>
-          Get!
-        </button> */}
       </div>
       <Logout />
       <div>Logged in as: {userEmail.userEmail}</div>
-      {/* <div className="listRecordsDiv">
-        <ul>{records}</ul>
-      </div> */}
       <div>
-        <Mapbox
-          selectedCoordinates={selectedCoordinates}
-          // retrieveCoordinates={retrieveCoordinates}
-          location={location}
-        />
+        <Mapbox selectedCoordinates={selectedCoordinates} location={location} />
       </div>
     </div>
   );
