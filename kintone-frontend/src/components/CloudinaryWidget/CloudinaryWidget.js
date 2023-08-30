@@ -2,17 +2,13 @@ import { useEffect } from "react";
 import "./Cloudinary.css";
 
 const CloudinaryWidget = ({ imageUrl, setImageUrl }) => {
-  //   const [imageUrl, setImageUrl] = useState("");
-
   useEffect(() => {
-    // Load the Cloudinary Upload Widget script
     const script = document.createElement("script");
     script.src = "https://widget.cloudinary.com/v2.0/global/all.js";
     script.async = true;
     document.body.appendChild(script);
 
     script.onload = () => {
-      // Initialize the Upload Widget when the script is loaded
       const widget = window.cloudinary.createUploadWidget(
         {
           cloudName: process.env.REACT_APP_CLOUDINARY_USERNAME,
@@ -21,11 +17,10 @@ const CloudinaryWidget = ({ imageUrl, setImageUrl }) => {
         (error, result) => {
           if (!error && result && result.event === "success") {
             setImageUrl(result.info.secure_url);
-            // Now you can use the image URL in your application
           }
         }
       );
-      // Open the Upload Widget when the button is clicked
+
       document
         .getElementById("upload_widget_opener")
         .addEventListener("click", () => {
