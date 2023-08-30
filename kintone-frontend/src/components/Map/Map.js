@@ -92,6 +92,7 @@ const Mapbox = ({ selectedCoordinates, location }) => {
             longitude={marker.longitude}
             offsetLeft={-20}
             offsetTop={-10}
+            location={location}
           />
         ))}
       </Map>

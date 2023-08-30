@@ -2,12 +2,16 @@ import { Marker, Popup } from "react-map-gl";
 import { useState } from "react";
 import "./Markers.css";
 
-const Markers = ({ latitude, longitude, offsetLeft, offsetTop }) => {
+const Markers = ({ latitude, longitude, offsetLeft, offsetTop, location }) => {
   const [showPopup, setShowPopup] = useState(false);
 
   const togglePopup = () => {
     setShowPopup(!showPopup);
   };
+
+  const locationInfo = location.find(
+    (loc) => loc.coordinates[0] === longitude && loc.coordinates[1] === latitude
+  );
 
   return (
     <div>
@@ -29,7 +33,11 @@ const Markers = ({ latitude, longitude, offsetLeft, offsetTop }) => {
           onClose={togglePopup}
           anchor="top"
         >
-          <div>This is a pop-up</div>
+          <div>
+            <p>Country: {locationInfo.country}</p>
+            <p>State: {locationInfo.state}</p>
+            <p>City: {locationInfo.city}</p>
+          </div>
         </Popup>
       )}
     </div>
