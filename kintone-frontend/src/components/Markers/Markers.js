@@ -24,7 +24,7 @@ const Markers = ({ latitude, longitude, offsetLeft, offsetTop, location }) => {
           📍
         </div>
       </Marker>
-      {showPopup && (
+      {showPopup && locationInfo && (
         <Popup
           latitude={latitude}
           longitude={longitude}
