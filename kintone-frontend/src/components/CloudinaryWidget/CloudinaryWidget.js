@@ -29,7 +29,6 @@ const CloudinaryWidget = ({ imageUrl, setImageUrl }) => {
     };
 
     return () => {
-      // Clean up the script element when the component unmounts
       document.body.removeChild(script);
     };
   }, [setImageUrl]);
