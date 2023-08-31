@@ -17,6 +17,8 @@ const CloudinaryWidget = ({ imageUrl, setImageUrl }) => {
         (error, result) => {
           if (!error && result && result.event === "success") {
             setImageUrl(result.info.secure_url);
+          } else {
+            console.error("Error uploading image:", error);
           }
         }
       );
