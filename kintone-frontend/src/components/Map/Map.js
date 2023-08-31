@@ -26,7 +26,7 @@ const Mapbox = ({ selectedCoordinates, location }) => {
       };
       setMarkers([...markers, newMarker]);
     }
-  }, [selectedCoordinates]);
+  }, [markers, selectedCoordinates]);
 
   useEffect(() => {
     if (location) {
