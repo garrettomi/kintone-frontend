@@ -134,9 +134,7 @@ function Home() {
             />
           </div>
         </div>
-        <div className="cloudinaryDiv">
-          <CloudinaryWidget imageUrl={imageUrl} setImageUrl={setImageUrl} />
-        </div>
+        <CloudinaryWidget imageUrl={imageUrl} setImageUrl={setImageUrl} />
         <div className="submitDiv">
           <button onClick={submit} disabled={loading ? true : false}>
             Submit!

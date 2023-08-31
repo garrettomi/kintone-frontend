@@ -91,11 +91,6 @@ body {
     margin-bottom: 10px;
   }
 
-  .cloudinaryDiv {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
   
   .submitDiv {
     display: flex;
