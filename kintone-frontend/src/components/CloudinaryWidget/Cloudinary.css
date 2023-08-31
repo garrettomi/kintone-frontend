@@ -6,13 +6,13 @@
   .cloudinary-widget {
     display: flex;
     align-items: center;
-    margin-top: 20px;
+
   }
 
   .upload-button {
     width: 100%; 
     padding: 10px;
-    background-color: #4092ea;
+    background-color: #df7233;
     color: #ffffff;
     border: none;
     border-radius: 5px;
@@ -22,5 +22,5 @@
   }
   
   .upload-button:hover {
-    background-color: #0056b3;
+    background-color: #8f3a09;
   }

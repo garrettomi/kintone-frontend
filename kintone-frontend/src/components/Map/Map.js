@@ -9,8 +9,8 @@ const Mapbox = ({ selectedCoordinates, location }) => {
   const initialViewport = {
     latitude: 0,
     longitude: 0,
-    zoom: 1,
-    minZoom: 1,
+    zoom: 1.25,
+    minZoom: 0,
     maxZoom: 10,
   };
 

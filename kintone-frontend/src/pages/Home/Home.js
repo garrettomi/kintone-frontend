@@ -143,9 +143,7 @@ function Home() {
           </button>
         </div>
       </div>
-      <div>
-        <Mapbox selectedCoordinates={selectedCoordinates} location={location} />
-      </div>
+      <Mapbox selectedCoordinates={selectedCoordinates} location={location} />
     </div>
   );
 }
