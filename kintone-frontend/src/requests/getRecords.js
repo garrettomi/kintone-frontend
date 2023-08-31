@@ -1,5 +1,5 @@
 const getRecordsEndpoint =
-  "https://kintone-project-backend.onrender.com/backend/getData";
+  "https://kintone-project-backend.onrender.com/getData";
 
 export default async function getRecords() {
   const response = await fetch(getRecordsEndpoint);
