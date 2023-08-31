@@ -97,42 +97,52 @@ function Home() {
 
   return (
     <div className="main">
-      <h2>Travel Tracker</h2>
+      <nav className="navbar">
+        <h2>Travel Tracker</h2>
+        <div className="user-info">Logged in as: {userEmail.userEmail}</div>
+        <Logout />
+      </nav>
       {loading ? (
         <div className="loadingDiv">
           <LoadingSpinner />
         </div>
       ) : null}
       Where have you visited?
-      <div className="selectDiv">
-        <p>Pick a Country</p>
-        <CountryPicker
-          selectedCountry={selectedCountry}
-          setSelectedCountry={setSelectedCountry}
-        />
-        <p>Then Pick a State</p>
-        <StatePicker
-          selectedCountry={selectedCountry}
-          selectedState={selectedState}
-          setSelectedState={setSelectedState}
-        />
-        <p>Lastly, Pick a City</p>
-        <CityPicker
-          selectedState={selectedState}
-          selectedCity={selectedCity}
-          setSelectedCity={setSelectedCity}
-        />
+      <div className="pickers-container">
+        <div className="selectDiv">
+          <div className="picker">
+            <p>Pick a Country...</p>
+            <CountryPicker
+              selectedCountry={selectedCountry}
+              setSelectedCountry={setSelectedCountry}
+            />
+          </div>
+          <div className="picker">
+            <p>Then the State...</p>
+            <StatePicker
+              selectedCountry={selectedCountry}
+              selectedState={selectedState}
+              setSelectedState={setSelectedState}
+            />
+          </div>
+          <div className="picker">
+            <p>Last the City!</p>
+            <CityPicker
+              selectedState={selectedState}
+              selectedCity={selectedCity}
+              setSelectedCity={setSelectedCity}
+            />
+          </div>
+        </div>
+        <div className="cloudinaryDiv">
+          <CloudinaryWidget imageUrl={imageUrl} setImageUrl={setImageUrl} />
+        </div>
+        <div className="submitDiv">
+          <button onClick={submit} disabled={loading ? true : false}>
+            Submit!
+          </button>
+        </div>
       </div>
-      <div>
-        <CloudinaryWidget imageUrl={imageUrl} setImageUrl={setImageUrl} />
-      </div>
-      <div className="submitDiv">
-        <button onClick={submit} disabled={loading ? true : false}>
-          Submit!
-        </button>
-      </div>
-      <Logout />
-      <div>Logged in as: {userEmail.userEmail}</div>
       <div>
         <Mapbox selectedCoordinates={selectedCoordinates} location={location} />
       </div>

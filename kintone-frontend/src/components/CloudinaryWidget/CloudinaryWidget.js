@@ -35,8 +35,10 @@ const CloudinaryWidget = ({ imageUrl, setImageUrl }) => {
   }, [setImageUrl]);
 
   return (
-    <div>
-      <button id="upload_widget_opener">Upload Image</button>
+    <div className="cloudinary-widget">
+      <button id="upload_widget_opener" className="upload-button">
+        Upload Image
+      </button>
       {imageUrl && (
         <img src={imageUrl} className="cloudinaryImage" alt="Uploaded" />
       )}
