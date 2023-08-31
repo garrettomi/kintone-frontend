@@ -41,6 +41,7 @@ export default function Login() {
   };
   return (
     <div className="login-container">
+      <h1 className="login-title">Travel Tracker</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="username">Email:</label>
@@ -64,7 +65,7 @@ export default function Login() {
         <button type="button" onClick={signInWithGoogle}>
           Sign In with Google
         </button>
-        <div>
+        <div className="link-container">
           <Link to="/signup">Need an account? Sign up here.</Link>
         </div>
       </form>

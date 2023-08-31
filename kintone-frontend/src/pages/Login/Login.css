@@ -9,16 +9,51 @@
     background-position: center;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
+.login-title {
+    font-size: 36px;
+    font-family: "Pacifico", sans-serif; 
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #022952; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeInAnimation 1s ease-in-out forwards;
+  }
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 form {
-    background-color: #ffffff;
+    background-color: #f6f6f6;
     border-radius: 10px;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
     width: 300px;
+    font-family: Arial, sans-serif;
+    animation: fadeInRightAnimation 1s ease-in-out forwards;
+}
+
+@keyframes fadeInRightAnimation {
+    0% {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 form div {
@@ -27,7 +62,8 @@ form div {
   
   label {
     display: block;
-    font-weight: bold;
+    font-weight: normal;
+    font-size: 14;
     margin-bottom: 5px;
   }
   
@@ -42,7 +78,7 @@ form div {
   button {
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
+    background-color: #4092ea;
     color: #ffffff;
     border: none;
     border-radius: 5px;
@@ -73,8 +109,15 @@ form div {
     color: #007bff;
     text-decoration: none;
     transition: color 0.3s ease;
+    background-color: transparent; /* Remove default background color */
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   
   .link-container a:hover {
-    color: #0056b3;
+    color: #ffffff;
+  background-color: #659ad3;
   }
