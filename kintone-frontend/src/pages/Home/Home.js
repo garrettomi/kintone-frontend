@@ -1,6 +1,6 @@
 import "./Home.css";
 import { useState, useEffect, useContext } from "react";
-import LoadingSpinner from "../../components/spinner";
+// import LoadingSpinner from "../../components/spinner";
 import CountryPicker from "../../components/countryPicker.js";
 import StatePicker from "../../components/statePicker.js";
 import CityPicker from "../../components/cityPicker.js";
@@ -102,12 +102,12 @@ function Home() {
         <div className="user-info">Logged in as: {userEmail.userEmail}</div>
         <Logout />
       </nav>
-      {loading ? (
+      {/* {loading ? (
         <div className="loadingDiv">
           <LoadingSpinner />
         </div>
       ) : null}
-      Where have you visited?
+      Where have you visited? */}
       <div className="pickers-container">
         <div className="selectDiv">
           <div className="picker">
