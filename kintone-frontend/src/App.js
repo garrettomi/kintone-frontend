@@ -15,29 +15,18 @@ import { onAuthStateChanged } from "firebase/auth";
 function App() {
   const [userEmail, setUserEmail] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  // const [authReady, setAuthReady] = useState(false);
-  // const [isLoggedIn, setIsLoggedIn] = useState(undefined);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUserEmail(user.email);
-        // setIsLoggedIn(true);
       } else {
         setUserEmail(null);
-        // setIsLoggedIn(false);
       }
       setIsLoading(false);
-      // setAuthReady(true);
     });
     return () => unsubscribe();
   }, []);
-
-  // if (!authReady) {
-  //   return <div>Loading...</div>;
-  // }
-
-  // const isLoggedIn = userEmail !== null;
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -50,7 +39,6 @@ function App() {
           <Route path="/" element={<Navigate to="/login" />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          {/* <Route path="/home" element={<Home />} /> */}
           <Route
             path="/home"
             element={userEmail ? <Home /> : <Navigate to="/login" />}
