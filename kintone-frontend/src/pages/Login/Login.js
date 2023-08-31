@@ -22,7 +22,7 @@ export default function Login() {
       await signInWithEmailAndPassword(auth, username, password);
       const user = auth.currentUser;
       setUserEmail(user.email);
-      navigate("/");
+      navigate("/home");
     } catch (error) {
       console.error(error);
     }
@@ -34,7 +34,7 @@ export default function Login() {
       const response = await signInWithPopup(auth, provider);
       const user = response.user;
       setUserEmail(user.email);
-      navigate("/");
+      navigate("/home");
     } catch (error) {
       console.error(error);
     }
