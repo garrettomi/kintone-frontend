@@ -109,7 +109,7 @@ form div {
     color: #007bff;
     text-decoration: none;
     transition: color 0.3s ease;
-    background-color: transparent; /* Remove default background color */
+    background-color: transparent; 
     display: inline-block;
     padding: 5px 10px;
     border: 1px solid #007bff;
