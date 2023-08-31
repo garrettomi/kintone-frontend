@@ -7,6 +7,7 @@ import {
 } from "firebase/auth";
 import auth from "../../authentication/firebase";
 import UserContext from "../../context/UserContext";
+import "./Login.css";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -39,32 +40,34 @@ export default function Login() {
     }
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="username">Email:</label>
-        <input
-          type="text"
-          id="username"
-          value={username}
-          onChange={(event) => setUsername(event.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-        />
-      </div>
-      <button type="submit">Submit</button>
-      <button type="button" onClick={signInWithGoogle}>
-        Sign In with Google
-      </button>
-      <div>
-        <Link to="/signup">Need an account? Sign up here.</Link>
-      </div>
-    </form>
+    <div className="login-container">
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="username">Email:</label>
+          <input
+            type="text"
+            id="username"
+            value={username}
+            onChange={(event) => setUsername(event.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          />
+        </div>
+        <button type="submit">Submit</button>
+        <button type="button" onClick={signInWithGoogle}>
+          Sign In with Google
+        </button>
+        <div>
+          <Link to="/signup">Need an account? Sign up here.</Link>
+        </div>
+      </form>
+    </div>
   );
 }

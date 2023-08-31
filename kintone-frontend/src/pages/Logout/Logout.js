@@ -8,7 +8,7 @@ const Logout = () => {
 
   const handleLogout = () => {
     navigate("/login");
-    console.log("User is logged out", userEmail);
+    console.log("User has successfully logged out", userEmail);
   };
 
   return <button onClick={handleLogout}>Logout</button>;
