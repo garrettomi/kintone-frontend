@@ -26,7 +26,7 @@ function Home() {
 
   useEffect(() => {
     async function fetchData() {
-      setLoading(true);
+      // setLoading(true);
 
       let response = await getRecords();
       let getLocation = response.records
@@ -50,7 +50,7 @@ function Home() {
         });
 
       setLocation(getLocation);
-      setLoading(false);
+      // setLoading(false);
     }
 
     fetchData();
