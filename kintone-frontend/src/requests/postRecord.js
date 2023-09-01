@@ -1,4 +1,5 @@
-const addRecordEndpoint = "https://kintone-project-backend.onrender.com";
+const addRecordEndpoint =
+  "https://kintone-project-backend.onrender.com/postData";
 
 export default async function postRecord(location) {
   const recordBodyParameters = {
