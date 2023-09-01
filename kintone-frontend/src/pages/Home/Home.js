@@ -1,6 +1,6 @@
 import "./Home.css";
 import { useState, useEffect, useContext } from "react";
-// import LoadingSpinner from "../../components/spinner";
+import LoadingSpinner from "../../components/spinner";
 import CountryPicker from "../../components/countryPicker.js";
 import StatePicker from "../../components/statePicker.js";
 import CityPicker from "../../components/cityPicker.js";
@@ -26,7 +26,7 @@ function Home() {
 
   useEffect(() => {
     async function fetchData() {
-      // setLoading(true);
+      setLoading(true);
 
       let response = await getRecords();
       let getLocation = response.records
@@ -50,14 +50,14 @@ function Home() {
         });
 
       setLocation(getLocation);
-      // setLoading(false);
+      setLoading(false);
     }
 
     fetchData();
   }, [userEmail.userEmail]);
 
   const submit = async () => {
-    // setLoading(true);
+    setLoading(true);
     let location = {
       country: selectedCountry.name,
       state: selectedState.name,
@@ -92,7 +92,7 @@ function Home() {
 
       setLocation((prevLocation) => [...prevLocation, location]);
     }
-    // setLoading(false);
+    setLoading(false);
   };
 
   return (
@@ -102,12 +102,12 @@ function Home() {
         <div className="user-info">Logged in as: {userEmail.userEmail}</div>
         <Logout />
       </nav>
-      {/* {loading ? (
+      {loading ? (
         <div className="loadingDiv">
           <LoadingSpinner />
         </div>
       ) : null}
-      Where have you visited? */}
+      Where have you visited?
       <div className="pickers-container">
         <div className="selectDiv">
           <div className="picker">
@@ -136,10 +136,7 @@ function Home() {
         </div>
         <CloudinaryWidget imageUrl={imageUrl} setImageUrl={setImageUrl} />
         <div className="submitDiv">
-          <button
-            onClick={submit}
-            // disabled={loading ? true : false}
-          >
+          <button onClick={submit} disabled={loading ? true : false}>
             Submit!
           </button>
         </div>
