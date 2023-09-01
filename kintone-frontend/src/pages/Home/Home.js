@@ -26,7 +26,7 @@ function Home() {
 
   useEffect(() => {
     async function fetchData() {
-      setLoading(true);
+      // setLoading(true);
 
       let response = await getRecords();
       let getLocation = response.records
@@ -50,14 +50,14 @@ function Home() {
         });
 
       setLocation(getLocation);
-      setLoading(false);
+      // setLoading(false);
     }
 
     fetchData();
   }, [userEmail.userEmail]);
 
   const submit = async () => {
-    setLoading(true);
+    // setLoading(true);
     let location = {
       country: selectedCountry.name,
       state: selectedState.name,
@@ -92,7 +92,7 @@ function Home() {
 
       setLocation((prevLocation) => [...prevLocation, location]);
     }
-    setLoading(false);
+    // setLoading(false);
   };
 
   return (
@@ -136,7 +136,10 @@ function Home() {
         </div>
         <CloudinaryWidget imageUrl={imageUrl} setImageUrl={setImageUrl} />
         <div className="submitDiv">
-          <button onClick={submit} disabled={loading ? true : false}>
+          <button
+            onClick={submit}
+            // disabled={loading ? true : false}
+          >
             Submit!
           </button>
         </div>
